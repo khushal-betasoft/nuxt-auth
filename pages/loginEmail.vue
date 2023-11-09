@@ -152,7 +152,13 @@ export default {
             data: this.response
           })
           console.log(response)
-          this.$router.push('/')
+          if (response.data.status) {
+            this.$swal({
+              title: 'Log in Successful',
+              toast: true,
+              position: 'top-start'
+            })
+          }
         } catch (err) {
           alert(err)
         }
@@ -198,10 +204,11 @@ export default {
       }
     },
     async googleLogin() {
-      await this.$auth.loginWith('google', {
-        params: { prompt: 'select_account' }
-      })
-      console.log(this.$auth.user)
+      console.log(
+        await this.$auth.loginWith('google', {
+          params: { prompt: 'select_account' }
+        })
+      )
     }
   }
 }

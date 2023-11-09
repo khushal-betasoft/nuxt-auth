@@ -17,6 +17,22 @@
         About
       </v-btn>
 
+      <nuxt-link to="/profilePage">
+        <v-avatar
+          v-show="$auth.loggedIn"
+          light
+          size="30"
+          color="orange"
+          class="mr-3"
+        >
+          <v-img
+            v-if="$auth.loggedIn && $auth.user.profile_picture != ''"
+            :src="$auth.user.profile_picture"
+          ></v-img>
+          <v-icon v-else class="black--text">mdi-account</v-icon>
+        </v-avatar>
+      </nuxt-link>
+
       <v-btn
         v-show="!$auth.loggedIn"
         color="success"
@@ -48,7 +64,6 @@
       >
         Log Out
       </v-btn>
-
     </v-app-bar>
   </div>
 </template>

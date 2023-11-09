@@ -34,6 +34,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    'nuxt-sweetalert2',
+
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -63,6 +65,14 @@ export default {
       callback: '/loginEmail'
     },
     strategies: {
+      google: {
+        clientId: '694316142059-11vcj3vv3udndihdrn00mpdi9s0fhkh5.apps.googleusercontent.com',
+        codeChallengeMethod: '',
+        responseType: 'token id_token',
+        grantType: 'authorization_code',
+        redirectUri: 'http://localhost:3000'
+
+      },
       local: {
         token: {
           property: 'accessToken',
@@ -81,18 +91,7 @@ export default {
           user: false // { url: '/api/auth/user', method: 'get' }
         }
       },
-      google: {
-        clientId: '694316142059-11vcj3vv3udndihdrn00mpdi9s0fhkh5.apps.googleusercontent.com',
-        codeChallengeMethod: '',
-        responseType: 'token id_token',
-        // grantType: 'authorization_code',
-        redirectUri: 'http://localhost:3000'
-        // endpoints: {
-        //   token: 'http://localhost:8000/user/google/', // your backend url to resolve your auth with google and give you the token back
-        //   userInfo: 'http://localhost:8000/auth/user/' // your endpoint to get the user info after you received the token
-        // },
 
-      },
       facebook: {
         // scheme: 'oauth2',
         // responseType: 'token id_token',
